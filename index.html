@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmpireX | Dominate Digital</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
+}
+
+/* Scroll Progress Bar */
+.progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#ff0066,#00f2ff);
+width:0%;
+z-index:9999;
+}
+
+
+/* Navbar */
+nav{
+position:fixed;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(15px);
+z-index:1000;
+transition:0.4s;
+}
+
+nav.scrolled{
+background:rgba(0,0,0,0.9);
+}
+
+nav h2{
+font-weight:800;
+font-size:24px;
+background:linear-gradient(45deg,#ff0066,#00f2ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#00f2ff;
+}
+
+/* Hero */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:radial-gradient(circle at 30% 30%,#1a1a1a,#000);
+position:relative;
+overflow:hidden;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:800;
+}
+
+.hero span{
+background:linear-gradient(45deg,#ff0066,#00f2ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+margin:20px 0;
+color:#ccc;
+font-size:18px;
+}
+
+.btn{
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff0066,#00f2ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #00f2ff;
+}
+
+/* Sections */
+section{
+padding:120px 8%;
+text-align:center;
+}
+
+/* Glass Cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:25px;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+transform:translateY(-15px);
+box-shadow:0 0 30px rgba(0,242,255,0.3);
+}
+
+/* Reveal Animation */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* WhatsApp Button */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+box-shadow:0 0 15px #25D366;
+z-index:999;
+}
+
+/* Footer */
+footer{
+padding:20px;
+background:#111;
+color:#888;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:40px;
+}
+}
+
+/* Pricing Section */
+.pricing-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+margin-top:60px;
+}
+
+.pricing-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+padding:50px 30px;
+border-radius:30px;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.1);
+position:relative;
+}
+
+.pricing-card:hover{
+transform:translateY(-15px);
+box-shadow:0 0 35px rgba(0,242,255,0.3);
+}
+
+.pricing-card h1{
+margin:20px 0;
+font-size:40px;
+}
+
+.pricing-card h1 span{
+font-size:16px;
+color:#aaa;
+}
+
+.pricing-card ul{
+list-style:none;
+margin:20px 0;
+}
+
+.pricing-card ul li{
+margin:10px 0;
+color:#ccc;
+}
+
+.popular{
+border:1px solid #00f2ff;
+box-shadow:0 0 40px rgba(0,242,255,0.4);
+}
+
+.badge{
+position:absolute;
+top:-15px;
+left:50%;
+transform:translateX(-50%);
+background:linear-gradient(45deg,#ff0066,#00f2ff);
+padding:6px 20px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar"></div>
+<div class="cursor"></div>
+
+<nav>
+<h2>EmpireX</h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<div>
+<h1>We Build <span>Digital Empires</span></h1>
+<p>High-Performance Marketing That Scales Your Business</p>
+<button class="btn">Start Growing</button>
+</div>
+</section>
+
+<section id="services" class="reveal">
+<h2>Our Services</h2>
+<div class="cards">
+<div class="card">
+<h3>Social Media Growth</h3>
+<p>Explosive organic & paid strategies.</p>
+</div>
+<div class="card">
+<h3>Paid Advertising</h3>
+<p>ROI focused Meta & Google campaigns.</p>
+</div>
+<div class="card">
+<h3>Website Development</h3>
+<p>High-converting premium websites.</p>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="reveal">
+<h2>Our Packages</h2>
+
+<div class="pricing-container">
+
+    <div class="pricing-card">
+        <h1>Basic</h1>
+        <ul>
+            <li>✔ 8 Social Media Posts</li>
+            <li>✔ Basic Ad Setup</li>
+            <li>✔ Monthly Report</li>
+            <li>✔ WhatsApp Support</li>
+        </ul>
+        <button class="btn">₹4,999<span>/month</span></button>
+    </div>
+
+    <div class="pricing-card popular">
+        <div class="badge">Most Popular</div>
+        <h1>Standard</h1>
+        <ul>
+            <li>✔ 16 Social Media Posts</li>
+            <li>✔ Meta Ads Management</li>
+            <li>✔ Lead Generation Setup</li>
+            <li>✔ Website Optimization</li>
+            <li>✔ Priority Support</li>
+        </ul>
+        <button class="btn">₹9,999<span>/month</span></button>
+    </div>
+
+    <div class="pricing-card">
+        <h1>Premium</h1>
+        
+        <ul>
+            <li>✔ Unlimited Creatives</li>
+            <li>✔ Meta + Google Ads</li>
+            <li>✔ Funnel Setup</li>
+            <li>✔ Landing Page Design</li>
+            <li>✔ Dedicated Manager</li>
+        </ul>
+        <button class="btn">₹19,999<span>/month</span></button>
+    </div>
+
+</div>
+</section>
+
+
+<section id="about" class="reveal">
+<h2>About EmpireX</h2>
+<p>We combine creativity, strategy & performance marketing to dominate digital platforms.</p>
+</section>
+
+<section id="contact" class="reveal">
+<h2>Let's Work Together</h2>
+<button class="btn">Contact Us</button>
+</section>
+
+<footer>
+© 2026 EmpireX | All Rights Reserved
+</footer>
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">💬</a>
+
+<script>
+/* Scroll Reveal */
+window.addEventListener("scroll",function(){
+document.querySelectorAll(".reveal").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
+el.classList.add("active");
+}
+});
+
+/* Progress Bar */
+let scrollTop=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight - document.documentElement.clientHeight;
+document.querySelector(".progress-bar").style.width=(scrollTop/height)*100+"%";
+
+/* Navbar Dark on Scroll */
+if(scrollTop>50){
+document.querySelector("nav").classList.add("scrolled");
+}else{
+document.querySelector("nav").classList.remove("scrolled");
+}
+});
+
+/* Custom Cursor */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.pageX+"px";
+cursor.style.top=e.pageY+"px";
+});
+</script>
+
+</body>
+</html>
